@@ -1,0 +1,9 @@
+node_modules/
+.vscode/
+.eslintrc
+react/node_modules/
+react/coverage
+react/.scannerwork
+react/*-lock.json
+react/__tests__/__snapshots__/*
+react/__tests__/*/__snapshots__/*

@@ -1,0 +1,28 @@
+{
+  "name": "projex-snippets",
+  "displayName": "projex-snippets",
+  "description": "List of snnipets to work with react, typescript and more",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "typescript",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.2.2",
+    "@commitlint/config-conventional": "^19.2.2",
+    "husky": "^9.0.11"
+  },
+  "scripts": {
+    "prepare": "npx husky install"
+  }
+}
