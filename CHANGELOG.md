@@ -6,10 +6,16 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.0.5] - 2024-04-22
+
+### Changed
+
+- feat: :sparkles: update the logo.png image
+
 ## [0.0.4] - 2024-04-22
 
 ### Changed
 
 - feature/add-snippets: feat: :sparkles: add snippets base for markdown, typescript and typescriptreact
 - feature/add-snippets: fix: :sparkles: update changelog file
-- feature/add-snippets: fix: :sparkles: update keywords  list
+- feature/add-snippets: fix: :sparkles: update keywords list
