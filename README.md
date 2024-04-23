@@ -61,7 +61,3 @@ Run the command `Preferences: Open Keyboard Shortcuts (JSON)` to open the keyboa
 
 ]
 ```
-
-### 3) Where can I learn more about keyboard shortcuts?
-
-You can read my article - [VS Code keyboard-fu: custom keyboard shortcuts that will boost your productivity](https://www.roboleary.net/2022/02/28/vscode-keyboard-fu-custom-keyboard-shortcuts.html).

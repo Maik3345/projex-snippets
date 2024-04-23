@@ -2,7 +2,5 @@
 .vscode-test/**
 .gitignore
 *.txt
-img/**
-!img/logo.png
 node_modules/**
 .github
