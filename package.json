@@ -1,28 +1,63 @@
 {
   "name": "projex-snippets",
-  "displayName": "projex-snippets",
+  "displayName": "Projex Snippets",
+  "version": "0.0.3",
   "description": "List of snnipets to work with react, typescript and more",
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.88.0"
-  },
   "categories": [
     "Snippets"
+  ],
+  "author": {
+    "name": "Maik Restrepo"
+  },
+  "publisher": "MaikRestrepo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Maik3345/projex-snippets"
+  },
+  "license": "MIT",
+  "scripts": {
+    "prepare": "npx husky install",
+    "build": "vsce package"
+  },
+  "keywords": [
+    "markdown",
+    "snippets",
+    "markdown snippets",
+    "extended markdown snippets",
+    "typescript snippets",
+    "typescript react snippets",
+    "react snippets",
+    "projex snippets",
+    "projex"
   ],
   "contributes": {
     "snippets": [
       {
         "language": "typescript",
-        "path": "./snippets/snippets.code-snippets"
+        "path": "./snippets/typescript.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/typescriptreact.code-snippets"
+      },
+      {
+        "language": "markdown",
+        "path": "./snippets/markdown.code-snippets"
       }
     ]
   },
   "devDependencies": {
     "@commitlint/cli": "^19.2.2",
     "@commitlint/config-conventional": "^19.2.2",
-    "husky": "^9.0.11"
+    "husky": "^9.0.11",
+    "vsce": "^2.15.0"
   },
-  "scripts": {
-    "prepare": "npx husky install"
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "icon": "img/logo.png",
+  "galleryBanner": {
+    "color": "#89009a",
+    "theme": "dark"
   }
 }
