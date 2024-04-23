@@ -1,65 +1,67 @@
-# projex-snippets README
+<h1 align="center">
+  <br>
+    <img align="center" src="img/logo.png" width="200">
+  <br>
+	<br>
+  Projex Snippets
+  <br>
+  <br>
+</h1>
 
-This is the README for your extension "projex-snippets". After writing up a brief description, we recommend including the following sections.
+## Activation
 
-## Features
+The snippets are only active in Markdown files (defined by `markdown` [language identifier](https://code.visualstudio.com/docs/languages/identifiers)), TypeScript files (defined by `typescript` language identifier), and TypeScript React files (defined by `typescriptreact` language identifier).
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## Snippets
 
-For example if there is an image subfolder under your extension project workspace:
+| Name                             | Prefix              | Description                                      |
+| -------------------------------- | ------------------- | ------------------------------------------------ |
+| Component title                  | compmarkdowntitle   | Add component title                              |
+| Component description            | compdescription     | Add component description                        |
+| Component configuration          | compconfig          | Add component configuration                      |
+| Component props                  | compprops           | Add component props                              |
+| Props description                | propsdescription    | Add prop description                             |
+| CSS Customization                | css                 | Add css customization                            |
+| Messages                         | msg                 | Add message details                              |
+| React Basic Hook                 | csreacthook         | Import and use React basic hook                  |
+| Preact Basic Hook                | cspreacthook        | Import and use Preact basic hook                 |
+| Import styles                    | csimpsty            | Import styles module                             |
+| Import Preact Styles Module      | csimppreacsty       | Import Preact styles module                      |
+| React Component with CSS Handles | cscompcsshandles    | Create a React component with CSS handles        |
+| Export by default                | csexportdef         | Export a component by default                    |
+| Import and export before default | csimporexportdef    | Import and export a component before the default |
+| React Provider                   | cscomprovider       | Create a React context provider                  |
+| Preact Provider                  | cspreactcomprovider | Create a Preact context provider                 |
+| Preact Component                 | cspreactcomponent   | Create a Preact component with styles            |
+|                                  |
 
-\!\[feature X\]\(images/feature-x.png\)
+### 1) How do I use the snippets?
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+To insert a snippet, you can just type one of the prefixes in a file, and you will be offered a completion suggestion. The setting `Editor: Snippet Suggestions` controls whether snippets are shown with other suggestions and how they are sorted. By default, they are shown inline.
 
-## Requirements
+Alternatively, you can open the Command Palette (`Ctrl+Shift+P`) and run the command "Insert Snippet", which presents you with a list to choose from.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+### 2) How do I add shortcuts for these snippets?
 
-## Extension Settings
+Run the command `Preferences: Open Keyboard Shortcuts (JSON)` to open the keyboard shortcuts config (_keybindings.json_). Add an new object to the array such as this:
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+```JSON
+[
 
-For example:
+	{
+		"key": "ctrl+t",
+		"mac": "cmd+t",
+		"command": "editor.action.insertSnippet",
+		"when": "!editorReadonly && editorLangId == markdown",
+		"args": {
+			"langId": "markdown",
+			"name": "Insert task list"
+		}
+	}
 
-This extension contributes the following settings:
+]
+```
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+### 3) Where can I learn more about keyboard shortcuts?
 
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+You can read my article - [VS Code keyboard-fu: custom keyboard shortcuts that will boost your productivity](https://www.roboleary.net/2022/02/28/vscode-keyboard-fu-custom-keyboard-shortcuts.html).

@@ -1,0 +1,40 @@
+{
+  "React Basic Hook": {
+    "prefix": "csreacthook",
+    "body": [
+      "import { useState, useEffect } from 'react';",
+      "",
+      "export interface ${1:${TM_FILENAME_BASE}}Type {}",
+      "",
+      "export const ${1:${TM_FILENAME_BASE}} = () => {",
+      "  const [state, setState] = useState<${1:${TM_FILENAME_BASE}}Type>({});",
+      "",
+      "  useEffect(() => {",
+      "    // Your code here",
+      "  }, []);",
+      "",
+      "  return [state, setState];",
+      "}",
+      ""
+    ]
+  },
+  "Preact Basic Hook": {
+    "prefix": "cspreacthook",
+    "body": [
+      "import { useState, useEffect } from 'preact/hooks';",
+      "",
+      "export interface ${1:${TM_FILENAME_BASE}}Type {}",
+      "",
+      "export const ${1:${TM_FILENAME_BASE}} = () => {",
+      "  const [state, setState] = useState<${1:${TM_FILENAME_BASE}}Type>({});",
+      "",
+      "  useEffect(() => {",
+      "    // Your code here",
+      "  }, []);",
+      "",
+      "  return [state, setState];",
+      "}",
+      ""
+    ]
+  }
+}

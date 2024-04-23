@@ -1,0 +1,83 @@
+{
+  "Component title": {
+    "prefix": "compmarkdowntitle",
+    "body": [
+      "# ${1:${TM_FILENAME_BASE}}",
+      "[Back to home](../README.md)",
+      ""
+    ],
+    "description": "Add component title"
+  },
+  "Component description": {
+    "prefix": "compdescription",
+    "body": [
+      "## Description",
+      "${1: description}",
+      "![${TM_FILENAME_BASE}](${TM_FILENAME_BASE}/${TM_FILENAME_BASE}.png)",
+    ],
+    "description": "Add component description"
+  },
+  "Component configuration": {
+    "prefix": "compconfig",
+    "body": [
+      "## Configuration",
+      "Add ${1:${TM_FILENAME_BASE}} in store theme",
+      "```json",
+      "\"${TM_FILENAME_BASE}\": {",
+      "    \"props\": {",
+      "        ${2:props}",
+      "    }",
+      "  }",
+      "```",
+    ],
+    "description": "Add component configuration"
+  },
+  "Component props": {
+    "prefix": "compprops",
+    "body": [
+      "## Props",
+      "|Prop name|Type|Default value|Description|",
+      "|---|---|---|---|",
+      "|${1:propName}|${2:type}|${3:defaultValue}|${4:description}|",
+    ],
+    "description": "Add component props"
+  },
+  "Props description": {
+    "prefix": "propsdescription",
+    "body": [
+      "## Prop ${1:propName} [${2:type}]",
+      "|Prop name|Type|Default value|Description|",
+      "|---|---|---|---|",
+      "|${3:propName}|${4:type}|${5:defaultValue}|${6:description}|",
+    ],
+    "description": "Add prop description"
+  },
+	"CSS Customization": {
+    "prefix": "css",
+    "body": [
+      "## Customization",
+			"",
+			"In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on Using CSS Handles for store customization.",
+			"",
+			"| CSS Handles      |",
+			"| ---------------- |",
+			"|  ${1:Class name} |"
+    ],
+    "description": "Add css customization"
+  },
+  "Messages": {
+    "prefix": "msg",
+    "body": [
+      "## Messages",
+      "",
+      "The following id message can be modified from graphQL IDE:",
+      "",
+      "|ID|Default value (es)|Component|",
+      "|--|------------------|---------|",
+      "|${3:ID}|${4:Default value}|${5:Component}",
+      "",
+      "- Root id: store/${1:app-name}.${2:${TM_FILENAME_BASE}}."
+    ],
+    "description": "Add css customization"
+  }
+}
