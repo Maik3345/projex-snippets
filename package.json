@@ -1,7 +1,7 @@
 {
   "name": "projex-snippets",
   "displayName": "Projex Snippets",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "List of snnipets to work with react, typescript and more",
   "categories": [
     "Snippets"
@@ -19,6 +19,17 @@
     "prepare": "npx husky install",
     "build": "vsce package"
   },
+  "keywords": [
+    "markdown",
+    "snippets",
+    "markdown snippets",
+    "extended markdown snippets",
+    "typescript snippets",
+    "typescript react snippets",
+    "react snippets",
+    "projex snippets",
+    "projex"
+  ],
   "contributes": {
     "snippets": [
       {
