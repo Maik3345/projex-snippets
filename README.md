@@ -8,6 +8,19 @@
   <br>
 </h1>
 
+## 📚 Documentación Detallada
+
+Accede a la documentación técnica y funcional de cada módulo:
+
+| Archivo | Descripción |
+| ------- | ----------- |
+| [docs/custom-chat-commands.md](docs/custom-chat-commands.md) | Comandos personalizados de chat `@projex` y automatización en VS Code. |
+| [docs/qa-summary.md](docs/qa-summary.md) | Automatización de resúmenes QA para PR y cambios de código. |
+| [docs/typescript-react-snippets.md](docs/typescript-react-snippets.md) | Snippets para TypeScript y React, patrones listos para desarrollo. |
+| [docs/documentation-generation.md](docs/documentation-generation.md) | Generación automática de documentación y diagramas Mermaid. |
+
+Cada archivo incluye diagramas, ejemplos y explicaciones técnicas para facilitar la adopción y uso de la extensión.
+
 ## Activation
 
 The snippets are only active in Markdown files (defined by `markdown` [language identifier](https://code.visualstudio.com/docs/languages/identifiers)), TypeScript files (defined by `typescript` language identifier), and TypeScript React files (defined by `typescriptreact` language identifier).
