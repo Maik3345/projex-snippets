@@ -6,19 +6,6 @@
   "categories": [
     "Snippets"
   ],
-  "author": {
-    "name": "Maik Restrepo"
-  },
-  "publisher": "MaikRestrepo",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Maik3345/projex-snippets"
-  },
-  "license": "MIT",
-  "scripts": {
-    "prepare": "npx husky install",
-    "build": "vsce package"
-  },
   "keywords": [
     "markdown",
     "snippets",
@@ -30,7 +17,76 @@
     "projex snippets",
     "projex"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Maik3345/projex-snippets"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Maik Restrepo"
+  },
+  "publisher": "MaikRestrepo",
+  "main": "./out/extension.js",
+  "scripts": {
+    "prepare": "npx husky",
+    "clean": "node scripts/clean-dist.js",
+    "build": "npm run package && vsce package --out dist/projex-snippets.vsix",
+    "package": "npm run build:instructions && npm run compile",
+    "build:instructions": "node scripts/generate-instructions.js",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
   "contributes": {
+    "chatParticipants": [
+      {
+        "id": "projex",
+        "name": "projex",
+        "description": "Asistente especializado en Pull Requests, documentación, QA y desarrollo",
+        "isSticky": true
+      }
+    ],
+    "commands": [
+      {
+        "command": "projex-snippets.clearChat",
+        "title": "Clear Projex Chat",
+        "category": "Projex"
+      },
+      {
+        "command": "projex-snippets.syncInstructions",
+        "title": "Sincronizar Instrucciones Projex",
+        "category": "Projex"
+      },
+      {
+        "command": "projex-snippets.checkInstructions",
+        "title": "Verificar Estado de Instrucciones Projex",
+        "category": "Projex"
+      },
+      {
+        "command": "projex-snippets.openHelp",
+        "title": "Abrir Ayuda de Instrucciones Projex",
+        "category": "Projex"
+      },
+      {
+        "command": "projex-snippets.activateProjexInstructions",
+        "title": "Activar Instrucciones Projex en Workspace",
+        "category": "Projex"
+      },
+      {
+        "command": "projex-snippets.toggleAutoSync",
+        "title": "Activar/Desactivar Sincronización Automática",
+        "category": "Projex"
+      }
+    ],
+    "configuration": {
+      "title": "Projex Snippets",
+      "properties": {
+        "projexSnippets.autoSyncInstructions": {
+          "type": "boolean",
+          "default": false,
+          "description": "Sincronizar automáticamente las instrucciones de Projex Snippets al iniciar VS Code"
+        }
+      }
+    },
     "snippets": [
       {
         "language": "typescript",
@@ -46,14 +102,20 @@
       }
     ]
   },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "devDependencies": {
-    "@commitlint/cli": "^19.2.2",
-    "@commitlint/config-conventional": "^19.2.2",
-    "husky": "^9.0.11",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@types/node": "^18.19.122",
+    "@types/vscode": "^1.102.0",
+    "husky": "^9.1.7",
+    "typescript": "^5.0.0",
     "vsce": "^2.15.0"
   },
   "engines": {
-    "vscode": "^1.88.0"
+    "vscode": "^1.102.0"
   },
   "icon": "img/logo.png",
   "galleryBanner": {
