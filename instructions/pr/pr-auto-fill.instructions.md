@@ -6,7 +6,7 @@ Automatizar la generación del contenido de Pull Request (PR) usando GitHub Copi
 ## Instrucción para Copilot
 
 1. **Lee el archivo de template de Pull Request**
-   - Ubicación típica: `.azuredevops/pull_request_template/PULL_REQUEST_TEMPLATE.md` o similar.
+   - Ubicación típica: `.azuredevops/pull_request_template/PULL_REQUEST_TEMPLATE.md` o `.github/pull_request_template.md` o similar.
    - Extrae las secciones y los comentarios guía del template.
 
 2. **Obtén el historial de cambios de la rama actual**
