@@ -6,6 +6,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.1.2](https://github.com/Maik3345/projex-snippets/compare/v0.1.1...v0.1.2) - (2025-08-10)
+
+### Bug Fixes
+
+* adjust fetch-depth in checkout step and clean up commented code in workflow ([16296b07](https://github.com/Maik3345/projex-snippets/commit/16296b078128d029aa2b4caf5562307281aba23c))
+
+
 ## [0.1.1](https://github.com/Maik3345/projex-snippets/releases/tag/v0.1.1) - (2025-08-10)
 
 ### Bug Fixes
