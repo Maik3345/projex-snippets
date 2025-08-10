@@ -6,6 +6,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.1.1](https://github.com/Maik3345/projex-snippets/releases/tag/v0.1.1) - (2025-08-10)
+
+### Bug Fixes
+
+* update version in package.json to 0.1.0 and adjust node.js setup in workflow ([3eb811d0](https://github.com/Maik3345/projex-snippets/commit/3eb811d0eda48c390864676a7b3216cd65feeca3))
+
+
 ## [0.0.5] - 2024-04-22
 
 ### Changed
