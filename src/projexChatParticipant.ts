@@ -15,7 +15,7 @@ interface ProjexCommand {
 }
 
 /**
- * Clase para el chat participant de Projex Snippets
+ * Clase para el chat participant de Projex
  * Esta clase maneja la interacción con el usuario en el chat
  */
 export class ProjexChatParticipant {
@@ -44,10 +44,10 @@ export class ProjexChatParticipant {
       handler: this.handleHelpCommand.bind(this),
     });
 
-    // Comando para interactuar con el LLM de GitHub Copilot
+    // Comando para interactuar con el LLM de Projex Snippets
     this.commands.set("ask", {
       name: "ask",
-      description: "Hace una pregunta al LLM de GitHub Copilot",
+      description: "Hace una pregunta al LLM de Projex Snippets",
       handler: this.handleAskCommand.bind(this),
     });
   }
@@ -102,7 +102,7 @@ export class ProjexChatParticipant {
 
     // Responder con un saludo
     stream.markdown(`# 👋 ¡Hola, ${messageText}!\n\n`);
-    stream.markdown("Este es un comando simple de demostración para el Chat Participant de Projex Snippets.\n\n");
+  stream.markdown("Este es un comando simple de demostración para el Chat Participant de Projex.\n\n");
     stream.markdown("Puedes personalizar y expandir este comando, o añadir más comandos según tus necesidades.");
     
     // Mostrar información del workspace si está disponible
@@ -123,7 +123,75 @@ export class ProjexChatParticipant {
     token: vscode.CancellationToken
   ): Promise<void> {
     // Extraer la pregunta (todo después de "ask")
-    const question = request.prompt.replace(/^ask\s*/i, "").trim();
+      const question = request.prompt.replace(/^ask\s*/i, "").trim();
+
+      if (!question) {
+        stream.markdown("❓ **Por favor, proporciona una pregunta después del comando 'ask'.**\n\nEjemplo: `@projex ask ¿Cómo puedo usar Projex Snippets en VS Code?`");
+        return;
+      }
+
+      try {
+        // Mostrar la conversación en formato de chat
+        stream.markdown("## 💬 Conversación con Projex Snippets\n\n");
+      
+        // Mostrar la pregunta del usuario
+        stream.markdown("### 👤 Usuario\n\n");
+        stream.markdown(question + "\n\n");
+      
+        // Mostrar la respuesta del asistente
+        stream.markdown("### 🤖 Asistente\n\n");
+      
+        // Simular la respuesta de Projex Snippets
+        const respuestas = {
+          "¿Cómo puedo usar Projex Snippets en VS Code?": 
+            "Para usar Projex Snippets en VS Code:\n\n" +
+            "1. **Instala la extensión**: Busca 'Projex Snippets' en el marketplace de extensiones y instálala.\n\n" +
+            "2. **Configura tus snippets**: Personaliza los snippets y comandos según tus necesidades.\n\n" +
+            "3. **Accede a los comandos**: Usa la paleta de comandos para ejecutar las funciones de Projex Snippets.\n\n" +
+            "4. **Utiliza el chat**: Interactúa con el chat participant para obtener ayuda y ejecutar comandos.\n\n" +
+            "Recuerda que puedes personalizar el comportamiento en la configuración de VS Code.",
+        
+          "¿Qué es Projex Snippets?": 
+            "Projex Snippets es una extensión para VS Code que facilita la gestión y uso de fragmentos de código personalizados.\n\n" +
+            "Principales características:\n\n" +
+            "• **Snippets personalizables**: Crea y edita tus propios fragmentos de código.\n\n" +
+            "• **Comandos rápidos**: Accede a funciones útiles desde la paleta de comandos.\n\n" +
+            "• **Integración con el chat**: Interactúa mediante comandos en el chat participant.\n\n" +
+            "• **Soporte para múltiples lenguajes**: Utiliza snippets en diferentes lenguajes de programación.\n\n" +
+            "Projex Snippets está diseñado para acelerar tu flujo de trabajo y mejorar la productividad.",
+          
+          "default": 
+            "Gracias por tu pregunta. Como asistente de programación, puedo ayudarte con:\n\n" +
+            "• Explicaciones sobre conceptos de programación\n" +
+            "• Sugerencias de código y soluciones técnicas\n" +
+            "• Información sobre Projex Snippets y VS Code\n" +
+            "• Consejos de desarrollo y buenas prácticas\n\n" +
+            "Para esta pregunta específica, te sugiero consultar la documentación oficial o proporcionar más detalles para que pueda darte una respuesta más precisa."
+        };
+      
+        // Pequeña pausa para simular procesamiento
+        await new Promise(resolve => setTimeout(resolve, 800));
+      
+        // Determinar qué respuesta mostrar
+        let respuesta = respuestas.default;
+      
+        // Buscar respuestas preprogramadas que coincidan
+        for (const [clave, valor] of Object.entries(respuestas)) {
+          if (question.toLowerCase().includes(clave.toLowerCase().replace(/[¿?]/g, "").trim())) {
+            respuesta = valor;
+            break;
+          }
+        }
+      
+        // Mostrar la respuesta
+        stream.markdown(respuesta);
+      
+        stream.markdown("\n\n---\n\n*Nota: Esta es una simulación. Para integrar con el LLM real de Projex Snippets, se necesitaría implementar el API completo.*");
+
+      } catch (error) {
+        stream.markdown(`❌ **Error al procesar la pregunta:** ${error instanceof Error ? error.message : "Error desconocido"}`);
+        stream.markdown("\n\nPor favor, intenta con otra pregunta o contacta al administrador del sistema si el problema persiste.");
+      }
 
     if (!question) {
       stream.markdown("❓ **Por favor, proporciona una pregunta después del comando 'ask'.**\n\nEjemplo: `@projex ask ¿Cómo puedo usar GitHub Copilot en VS Code?`");
@@ -208,7 +276,7 @@ export class ProjexChatParticipant {
     stream: vscode.ChatResponseStream,
     token: vscode.CancellationToken
   ) {
-    stream.markdown("# 🚀 Projex Assistant - Comandos Disponibles\n\n");
+  stream.markdown("# 🚀 Projex Assistant - Comandos Disponibles\n\n");
 
     // Listar todos los comandos disponibles
     for (const [key, command] of this.commands) {
@@ -220,9 +288,9 @@ export class ProjexChatParticipant {
     }
 
     stream.markdown("**Ejemplos de uso:**\n\n");
-    stream.markdown("- `@projex message hola` - Muestra un saludo personalizado\n");
-    stream.markdown("- `@projex message equipo` - Saluda al equipo\n");
-    stream.markdown("- `@projex ask ¿Cómo funciona GitHub Copilot?` - Realiza preguntas al modelo\n\n");
+  stream.markdown("- `@projex message hola` - Muestra un saludo personalizado\n");
+  stream.markdown("- `@projex message equipo` - Saluda al equipo\n");
+  stream.markdown("- `@projex ask ¿Cómo funciona Projex Snippets?` - Realiza preguntas al modelo\n\n");
 
     stream.markdown(
       '💡 **Tip:** Puedes agregar más comandos personalizados en la función initializeCommands()'
@@ -248,8 +316,8 @@ export class ProjexChatParticipant {
         label: "👋 Saludar",
       },
       {
-        prompt: "@projex ask ¿Cómo puedo usar GitHub Copilot en VS Code?",
-        label: "🤖 Hacer una pregunta a Copilot",
+        prompt: "@projex ask ¿Cómo puedo usar Projex Snippets en VS Code?",
+        label: "🤖 Hacer una pregunta a Projex Snippets",
       }
     ];
   }

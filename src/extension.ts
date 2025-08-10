@@ -30,24 +30,49 @@ export function activate(context: vscode.ExtensionContext) {
   const autoSync = config.get<boolean>("autoSyncInstructions", true);
 
   if (autoSync) {
+    // Ejecutar en segundo plano después de un breve retraso para no bloquear la activación
     setTimeout(async () => {
       try {
-        const hadInstructionsBefore = await InstructionSyncManager.hasInstructions();
+        // Verificar primero si existen instrucciones
+        const hadInstructionsBefore =
+          await InstructionSyncManager.hasInstructions();
+
+        // Realizar la sincronización
         await InstructionSyncManager.syncInstructions(
           context.extensionPath,
           true
         );
-        const hasInstructionsAfter = await InstructionSyncManager.hasInstructions();
+
+        // Verificar si existen instrucciones después de la sincronización
+        const hasInstructionsAfter =
+          await InstructionSyncManager.hasInstructions();
+
+        // Si no había instrucciones antes pero ahora sí, mostrar mensaje
         const hasChanges = !hadInstructionsBefore && hasInstructionsAfter;
-        console.log("Auto-sincronización de instrucciones completada", hasChanges ? "con instalación inicial" : "sin cambios notables");
+
+        console.log(
+          "Auto-sincronización de instrucciones completada",
+          hasChanges ? "con instalación inicial" : "sin cambios notables"
+        );
+
+        // Mostrar mensajes solo si hubo cambios (primera instalación)
         if (hasChanges) {
-          vscode.window.setStatusBarMessage("📝 Instrucciones Projex instaladas", 5000);
-          vscode.window.showInformationMessage("📝 Instrucciones Projex instaladas correctamente", "OK");
+          // Mostrar un mensaje discreto para informar al usuario
+          vscode.window.setStatusBarMessage(
+            "📝 Instrucciones Projex Snippets instaladas",
+            5000
+          );
+
+          // Mostrar una notificación más sutil que no interrumpa el flujo de trabajo
+          vscode.window.showInformationMessage(
+            "📝 Instrucciones Projex Snippets instaladas correctamente",
+            "OK"
+          );
         }
       } catch (error) {
         console.error("Error en auto-sincronización de instrucciones:", error);
       }
-    }, 2000);
+    }, 2000); // 2 segundos de retraso para no afectar el rendimiento de inicio
   }
 
   // Registrar comandos para el chat
@@ -59,7 +84,7 @@ export function activate(context: vscode.ExtensionContext) {
   );
   context.subscriptions.push(clearChatCommand);
 
-  // Registrar comandos para instrucciones
+  // Registrar comandos para instrucciones de Projex Snippets
   registerCommands(context, context.extensionPath);
 
   // Registrar el comando en la paleta de comandos
@@ -68,10 +93,11 @@ export function activate(context: vscode.ExtensionContext) {
       "projex-snippets.activateProjexInstructions",
       async () => {
         const action = await vscode.window.showInformationMessage(
-          "¿Activar instrucciones de Projex Snippets en este workspace?",
+          "Activar instrucciones de Projex Snippets en este workspace?",
           "Activar",
           "Cancelar"
         );
+
         if (action === "Activar") {
           vscode.commands.executeCommand("projex-snippets.syncInstructions");
         }
