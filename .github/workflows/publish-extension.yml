@@ -45,6 +45,9 @@ jobs:
         env:
           VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
 
+      - name: Reset changes
+        run: git reset --hard HEAD
+
       - name: Release stable and push
         run: projex git release stable --yes
 
