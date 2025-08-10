@@ -30,7 +30,7 @@
   "scripts": {
     "prepare": "npx husky",
     "clean": "node scripts/clean-dist.js",
-    "build": "npm run package && vsce package --out dist/projex-snippets.vsix",
+    "build": "npm run package && vsce package",
     "package": "npm run build:instructions && npm run compile",
     "build:instructions": "node scripts/generate-instructions.js",
     "compile": "tsc -p ./",
