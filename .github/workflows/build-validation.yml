@@ -1,9 +1,14 @@
 name: Build Validation
 
+permissions:
+  contents: write
+  pull-requests: write
+
 on:
-  push:
+  pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build-validation:
