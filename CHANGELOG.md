@@ -6,6 +6,17 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.3.0](https://github.com/Maik3345/projex-snippets/compare/v0.2.0...v0.3.0) - (2025-08-17)
+
+### Features
+
+* merge pull request #4 from maik3345/feature/action-github ([498c9470](https://github.com/Maik3345/projex-snippets/commit/498c9470f4e5a4c02831dc7a0edc2cbe18987eba))
+
+### Bug Fixes
+
+* update build validation workflow to include permissions and correct event triggers ([e5f6c149](https://github.com/Maik3345/projex-snippets/commit/e5f6c14964c00948b1285b435dc1ecd346244761))
+
+
 ## [0.2.0](https://github.com/Maik3345/projex-snippets/compare/v0.1.2...v0.2.0) - (2025-08-17)
 
 ### Features
