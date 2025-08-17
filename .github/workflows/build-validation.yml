@@ -3,27 +3,34 @@ name: Build Validation
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-validation:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: "🔄 Checkout code"
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set up Node.js
+      - name: "🟢 Set up Node.js"
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
-      - name: Install pnpm
+      - name: "🏷️ Sync Pull Request Labels"
+        uses: Maik3345/projex-github-actions/src/pr-label-action@v1
+        with:
+          pr_number: ${{ github.event.pull_request.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+
+      - name: "📦 Install pnpm"
         run: npm install -g pnpm
 
-      - name: Install dependencies
+      - name: "📥 Install dependencies"
         run: pnpm install
 
-      - name: Build package
+      - name: "🏗️ Build package"
         run: npm run build
